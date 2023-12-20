@@ -27,6 +27,17 @@ export default {
   methods: {
     getMovie(){
       console.log("ho premuto search")
+
+      // qui farò la chiamata ad axios
+      axios.get('/user?ID=12345')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
     }
   },
 

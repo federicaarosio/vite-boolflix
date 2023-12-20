@@ -1,17 +1,19 @@
-<template>
-    <MoviesList />
+<template lang="">
+    <h1>
+        Lista film
+    </h1>
+    <SingleMovie />
 </template>
-
 <script>
 import { store } from '../js/store.js';
 
-import MoviesList from './MoviesList.vue';
+import SingleMovie from './SingleMovie.vue';
 
 export default {
-    name: "AppMain",
-    
+    name: "MoviesList",
+
     components: {
-        MoviesList
+        SingleMovie
     },
 
     data() {
@@ -21,7 +23,6 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
+<style lang="">
     
 </style>
