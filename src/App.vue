@@ -1,8 +1,6 @@
 <template lang="">
-  <div>
     <AppHeader />
     <AppMain />
-  </div>
 </template>
 <script>
 import { store } from './js/store.js';
