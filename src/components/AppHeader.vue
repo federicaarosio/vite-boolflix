@@ -1,5 +1,12 @@
 <template>
-        <input type="text">
+        <section class="search">
+            <form>
+                <input type="text" placeholder="cerca un film">
+                <button @click="$emit('mysearch')">
+                    Search
+                </button>
+            </form>
+        </section>
 </template>
 
 <script>
