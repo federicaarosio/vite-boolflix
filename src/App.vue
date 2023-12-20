@@ -37,7 +37,7 @@ export default {
         axios.get(apiMovies)
 
         .then((response) => {
-          this.store.movieList = response.data.results;
+          store.moviesList = response.data.results;
           // popolo l'array movieList in store
           console.warn(response.data.results)
         })

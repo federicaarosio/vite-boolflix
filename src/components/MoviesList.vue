@@ -2,7 +2,7 @@
     <h1>
         Lista film
     </h1>
-    <SingleMovie />
+    <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"/>
 </template>
 <script>
 import { store } from '../js/store.js';
