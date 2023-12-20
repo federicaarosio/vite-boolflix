@@ -2,7 +2,12 @@
     <h1>
         Lista film
     </h1>
-    <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"/>
+    <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"
+    :title= "movie.title"
+    :originalTitle= "movie.original_title"
+    :originalLanguage= "movie.original_language"
+    :voteAverage= "movie.vote_average"
+    />
 </template>
 <script>
 import { store } from '../js/store.js';
