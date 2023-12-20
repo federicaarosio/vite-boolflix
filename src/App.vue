@@ -26,33 +26,29 @@ export default {
 
   methods: {
     getMovie(){
-      console.log("ho premuto search")
 
-      // let apiMovies = store.apiListOfMovies;
-
-      // if (quello che cerco nell'input della searchbar è !== da "") {
-      //   allora compongo quello che passo nella chiamata ad axios:
-      //   apiMovies += `&query=${store.searchMovie}`
-      // }
+      let apiMovies = store.apiListOfMovies;
       
+      if (store.searchMovie !== "") {
+        console.log(`ho scritto: ${store.searchMovie} nella searchbar`);
+        apiMovies += `&query=${store.searchMovie}`;
 
-        
+        // qui farò la chiamata ad axios
+        axios.get(apiMovies)
 
+        .then((response) => {
+          this.store.movieList = response.data.results;
+          // popolo l'array movieList in store
+          console.warn(response.data.results)
+        })
 
+        .catch(function (error) {
+          console.log(error);
+        });
 
-      // qui farò la chiamata ad axios
-      // axios.get(apiMovies)
+      }  
+    },
 
-      // .then((response) => {
-      //   console.log(response.data);
-      //   this.store.movieList = response.data;
-      //   // popolo l'array movieList in store
-      // })
-
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
-    }
   },
 
   created() {

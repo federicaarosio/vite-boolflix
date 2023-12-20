@@ -3,7 +3,7 @@
             <form>
                 <input type="text" placeholder="cerca un film" v-model.trim="store.searchMovie" >
                     <!-- in input devo mettere un v model che si agganci ai dati nello store (searchMovie)-->
-                <button @click="$emit('mysearch')">
+                <button @click.prevent="$emit('mysearch')">
                     Search
                 </button>
             </form>
