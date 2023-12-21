@@ -2,34 +2,37 @@
     <section class="media-card">
 
         <!-- Copertina -->
-        <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
-        <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
-        
-        <!-- Media Info -->
-        <div class="media-info-wrapper">
-            <p>
-                {{title}}
-            </p>
-            <p>
-                {{ originalTitle }}
-            </p>
-            <p>
-                {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
-            </p>
-            <p>
-                {{ voteAverage }}
-            </p>
-            <div class="vote-wrapper">
-                <div v-for="star in (voteAverage)" :key="star">
-                    <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
-                </div>
-            </div>
+        <div class="cover-wrapper">
+            <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
+            <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
 
+            <div class="media-info-wrapper">
+                <p>
+                    <span class="bold-text">Titolo:</span> {{title}}
+                </p>
+                <p>
+                    <span class="bold-text">Titolo originale:</span> {{ originalTitle }}
+                </p>
+                <p>
+                    {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
+                </p>
+                
+                <div class="vote-wrapper">
+                    <span class="bold-text">Voto: </span>
+                    <div v-for="star in (voteAverage)" :key="star">
+                        <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
+                    </div>
+                </div>
+    
+            </div>
         </div>
         
+        <!-- Media Info -->
+        
     </section>
-
 </template>
+
+
 
 <script>
 import CountryFlag from '../../node_modules/vue-country-flag-next'
@@ -72,6 +75,8 @@ export default {
 }
 </script>
 
+
+
 <style lang="scss" scoped>
 @use "../styles/partials/mixins" as *;
 @use "../styles/partials/variables" as *;
@@ -80,17 +85,53 @@ export default {
         border: 1px solid black;
         width: calc((100% / 4) - 1rem);
         margin-bottom: 1rem;
+        
 
         img.poster {
             width: 100%;
+            object-fit: contain;
         }
     }
+
+    div.cover-wrapper {
+        position: relative;
+        z-index: 0;       
+    }
+
+    div.media-info-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+    }
+
+    div.cover-wrapper:hover div.media-info-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        padding: $main-padding;
+        background-color: black;
+        color: white;
+        width: 100%;
+        span.bold-text {
+            font-weight: $bold-text;
+        }
+
+    }
+
+    
+
+
+
+
     div.vote-wrapper {
         @include flex(row, start, center);
     }
 
     img.star {
-        width: 20px;
+        width: 15px;
     }
 
     
