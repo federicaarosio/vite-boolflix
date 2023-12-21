@@ -14,11 +14,12 @@
         {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
     </p>
     <p>
-        {{ Math.ceil(voteAverage / 2) }}
+        {{ voteAverage }}
     </p>
-    <p>
-        {{ getStars(Math.ceil(voteAverage / 2)) }}
-    </p>
+
+    <div v-for="star in (voteAverage)" :key="star">
+        <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
+    </div>
     
 
 </template>
@@ -60,18 +61,15 @@ export default {
             required: true
         },
     },
-    
-    methods: {
-        getStars(n){
-            for (let i = 0; i < n; i++) {
-                return "*"   
-            }
-        }
-    }
 
 }
 </script>
 
 <style lang="scss">
+
+    img.star {
+        width: 20px;
+    }
+
     
 </style>

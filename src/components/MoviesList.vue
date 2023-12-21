@@ -7,7 +7,7 @@
     :title= "movie.title"
     :originalTitle= "movie.original_title"
     :originalLanguage= "movie.original_language"
-    :voteAverage= "movie.vote_average"
+    :voteAverage= "Math.ceil(movie.vote_average/2)"
     />
 </template>
 <script>
