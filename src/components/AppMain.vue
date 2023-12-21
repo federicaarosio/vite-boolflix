@@ -1,6 +1,8 @@
 <template>
-    <MoviesList />
-    <SeriesList />
+    <section class="main">
+        <MoviesList />
+        <SeriesList />
+    </section>
 </template>
 
 <script>
@@ -26,5 +28,12 @@ export default {
 </script>
 
 <style lang="scss">
-    
+@use "../styles/partials/variables" as *;
+
+    section.main {
+        height: calc(100vh - 70px);
+        overflow-y: scroll;
+        background-color: $bg-color;
+        padding: $main-padding;
+    }
 </style>
