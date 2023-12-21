@@ -33,19 +33,32 @@ export default {
         console.log(`ho scritto: ${store.searchMovie} nella searchbar`);
         apiMovies += `&query=${store.searchMovie}`;
 
-        // qui farò la chiamata ad axios
+        //chiamata ad axios
         axios.get(apiMovies)
+          .then((response) => {
+            // popolo l'array moviesList in store
+            store.moviesList = response.data.results;
+            console.warn(response.data.results)
+          })
 
-        .then((response) => {
-          store.moviesList = response.data.results;
-          // popolo l'array movieList in store
-          console.warn(response.data.results)
-        })
+          .catch(function (error) {
+            console.log(error);
+          });
 
-        .catch(function (error) {
-          console.log(error);
-        });
 
+        // Seconda chiamata per serie tv?? 
+        
+        let apiSeries = store.apiListOfSeries;
+        if (store.searchMovie !== "") {
+          apiSeries += `&query=${store.searchMovie}`;
+
+          axios.get(apiSeries)
+          .then((response) => {
+            // popolo l'array seriesList in store
+            store.seriesList = response.data.results;
+          })
+
+        }
       }  
     },
 

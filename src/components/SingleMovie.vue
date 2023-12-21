@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <h3>
         Single Movie
     </h3>
@@ -38,13 +38,13 @@ export default {
             required: true
         },
         voteAverage: {
-            type: String,
+            type: Number,
             required: true
         },
     }
 }
 </script>
 
-<style lang="">
+<style lang="scss">
     
 </style>
