@@ -1,15 +1,22 @@
 <template lang="">
-    <h1>
-        Lista film
-    </h1>
-    <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"
-    :image= "movie.poster_path"
-    :title= "movie.title"
-    :originalTitle= "movie.original_title"
-    :originalLanguage= "movie.original_language"
-    :voteAverage= "Math.ceil(movie.vote_average/2)"
-    />
+    <section class="movies-list">
+        <h1>
+            Movies
+        </h1>
+        <section class="list-wrapper">
+            <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"
+            :image= "movie.poster_path"
+            :title= "movie.title"
+            :originalTitle= "movie.original_title"
+            :originalLanguage= "movie.original_language"
+            :voteAverage= "Math.ceil(movie.vote_average/2)"
+            />
+        </section>
+    </section>
 </template>
+
+
+
 <script>
 import { store } from '../js/store.js';
 
@@ -29,6 +36,18 @@ export default {
     },
 }
 </script>
-<style lang="">
-    
+
+
+
+<style lang="scss" scoped>
+@use "../styles/partials/mixins" as *;
+@use "../styles/partials/variables" as *;
+
+    section.movies-list {
+        
+    }
+    section.list-wrapper {
+        @include flex(row, start, stretch);
+        flex-wrap: wrap;
+    }
 </style>
