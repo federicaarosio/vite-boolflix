@@ -14,7 +14,10 @@
         {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
     </p>
     <p>
-        {{ voteAverage }}
+        {{ Math.ceil(voteAverage / 2) }}
+    </p>
+    <p>
+        {{ getStars(Math.ceil(voteAverage / 2)) }}
     </p>
     
 
@@ -57,6 +60,14 @@ export default {
             required: true
         },
     },
+    
+    methods: {
+        getStars(n){
+            for (let i = 0; i < n; i++) {
+                return "*"   
+            }
+        }
+    }
 
 }
 </script>
