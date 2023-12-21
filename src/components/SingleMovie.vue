@@ -2,7 +2,8 @@
     <h3>
         Single Movie
     </h3>
-    <img :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" />
+    <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" />
+    <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" >
     
     <p>
         {{title}}
@@ -18,6 +19,7 @@
     </p>
 
     <div v-for="star in (voteAverage)" :key="star">
+        
         <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
     </div>
     
