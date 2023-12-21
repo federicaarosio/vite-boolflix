@@ -9,16 +9,25 @@
         {{ originalTitle }}
     </p>
     <p>
-        {{ originalLanguage }}
+        {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
     </p>
     <p>
         {{ voteAverage }}
     </p>
+    
+
 </template>
 
 <script>
+import CountryFlag from '../../node_modules/vue-country-flag-next'
 
 export default {
+    name: "SingleMovie",
+
+    components: {
+        CountryFlag
+    },
+
     data() {
         return {
         }

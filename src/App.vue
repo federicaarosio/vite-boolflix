@@ -1,4 +1,5 @@
 <template lang="">
+
     <AppHeader @mysearch="getMovie"/>
     <AppMain />
 </template>
