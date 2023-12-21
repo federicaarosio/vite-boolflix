@@ -2,6 +2,8 @@
     <h3>
         Single Movie
     </h3>
+    <img :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" />
+    
     <p>
         {{title}}
     </p>
@@ -34,6 +36,10 @@ export default {
     },
 
     props: {
+        image: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             required: true
@@ -50,7 +56,8 @@ export default {
             type: Number,
             required: true
         },
-    }
+    },
+
 }
 </script>
 

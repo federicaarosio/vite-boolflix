@@ -3,6 +3,7 @@
         Lista Serie TV
     </h1>
     <SingleMovie v-for="(serie, index) in  store.seriesList" :key="index"
+    :image= "serie.poster_path"
     :title= "serie.name"
     :originalTitle= "serie.name"
     :originalLanguage= "serie.original_language"

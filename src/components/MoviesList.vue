@@ -3,6 +3,7 @@
         Lista film
     </h1>
     <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"
+    :image= "movie.poster_path"
     :title= "movie.title"
     :originalTitle= "movie.original_title"
     :originalLanguage= "movie.original_language"
