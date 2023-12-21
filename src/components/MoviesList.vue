@@ -44,10 +44,11 @@ export default {
 @use "../styles/partials/variables" as *;
 
     section.movies-list {
-        
+        margin-bottom: 3rem;
     }
     section.list-wrapper {
-        @include flex(row, start, stretch);
+        @include flex(row, center, stretch);
         flex-wrap: wrap;
+        gap: 1rem;
     }
 </style>

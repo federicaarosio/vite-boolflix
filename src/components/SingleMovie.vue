@@ -1,28 +1,33 @@
 <template>
-    <h3>
-        Single Movie
-    </h3>
-    <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" />
-    <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" >
-    
-    <p>
-        {{title}}
-    </p>
-    <p>
-        {{ originalTitle }}
-    </p>
-    <p>
-        {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
-    </p>
-    <p>
-        {{ voteAverage }}
-    </p>
+    <section class="media-card">
 
-    <div v-for="star in (voteAverage)" :key="star">
+        <!-- Copertina -->
+        <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
+        <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
         
-        <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
-    </div>
-    
+        <!-- Media Info -->
+        <div class="media-info-wrapper">
+            <p>
+                {{title}}
+            </p>
+            <p>
+                {{ originalTitle }}
+            </p>
+            <p>
+                {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
+            </p>
+            <p>
+                {{ voteAverage }}
+            </p>
+            <div class="vote-wrapper">
+                <div v-for="star in (voteAverage)" :key="star">
+                    <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
 
 </template>
 
@@ -67,7 +72,22 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@use "../styles/partials/mixins" as *;
+@use "../styles/partials/variables" as *;
+
+    section.media-card {
+        border: 1px solid black;
+        width: calc((100% / 4) - 1rem);
+        margin-bottom: 1rem;
+
+        img.poster {
+            width: 100%;
+        }
+    }
+    div.vote-wrapper {
+        @include flex(row, start, center);
+    }
 
     img.star {
         width: 20px;
