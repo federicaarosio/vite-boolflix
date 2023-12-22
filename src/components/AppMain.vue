@@ -33,7 +33,6 @@ export default {
     section.main {
         height: calc(100vh - 70px);
         overflow-y: scroll;
-        // background-color: $bg-color;
         background-image: linear-gradient($bg-color, #232323);
         padding: $main-padding;
     }

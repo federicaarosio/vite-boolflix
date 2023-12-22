@@ -50,6 +50,6 @@ export default {
     section.list-wrapper {
         @include flex(row, start, stretch);
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: .5rem;
     }
 </style>

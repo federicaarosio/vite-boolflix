@@ -43,15 +43,20 @@ export default {
         }
 
         input.searchbar {
-            padding: .2rem
+            padding: .4rem;
+            border: none;
+            border-radius: 5px;
+
         }
 
         button.search-button {
-            padding: .2rem;
+            padding: .5rem 1rem;
             background-color: $accent-color;
-            color: $text-color;
+            color: white;
             border: none;
             margin-left: 1rem;
+            border-radius: 5px;
+
         }
 
     }
