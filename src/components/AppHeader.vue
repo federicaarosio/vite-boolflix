@@ -1,6 +1,8 @@
 <template>
         <section class="search">
-            <img class="logo" src="" alt="logo"/>
+            <div class="logo">
+                Boolflix
+            </div>
             <form>
                 <input type="text" placeholder="cerca un film" v-model.trim="store.searchMovie" class="searchbar">
                 <button @click.prevent="$emit('mysearch')" class="search-button">
@@ -30,17 +32,25 @@ export default {
 
 
     section.search {
-        background-color: black;
+        background-color: $bg-color;
         height: 70px;
         @include flex(row, space-between, center);
         padding: $main-padding;
+
+        div.logo {
+            color: $accent-color;
+        }
 
         input.searchbar {
             padding: .2rem
         }
 
         button.search-button {
-            padding: .2rem
+            padding: .2rem;
+            background-color: $accent-color;
+            color: $text-color;
+            border: none;
+            margin-left: 1rem;
         }
 
     }

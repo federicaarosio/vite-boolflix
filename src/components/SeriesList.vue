@@ -1,7 +1,7 @@
 <template lang="">
     <section class="tv-series-list">
         <h1>
-            TV series
+            TV series found: {{store.seriesList.length}}
         </h1>
         <section class="list-wrapper">
             <SingleMovie v-for="(serie, index) in  store.seriesList" :key="index"

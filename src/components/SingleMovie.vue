@@ -108,7 +108,7 @@ export default {
 
         img.poster {
             width: 100%;
-            object-fit: contain;
+            height: 100%;
         }
     }
 
@@ -143,7 +143,7 @@ export default {
 
     
 
-
+  
 
 
     div.vote-wrapper {
@@ -152,6 +152,7 @@ export default {
 
     img.star {
         width: 15px;
+        margin-left: 7px;
     }
 
     

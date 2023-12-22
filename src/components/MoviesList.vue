@@ -1,7 +1,7 @@
 <template lang="">
     <section class="movies-list">
         <h1>
-            Movies
+            Movies found: {{store.moviesList.length}}
         </h1>
         <section class="list-wrapper">
             <SingleMovie v-for="(movie, index) in  store.moviesList" :key="index"
