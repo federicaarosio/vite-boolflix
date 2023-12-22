@@ -7,14 +7,15 @@
             <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
 
             <div class="media-info-wrapper">
-                <p>
+                
+                <p class="title">
                     <span class="bold-text">Titolo:</span> {{title}}
                 </p>
-                <p>
+                <p class="original-title">
                     <span class="bold-text">Titolo originale:</span> {{ originalTitle }}
                 </p>
-                <p>
-                    {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
+                <p class="media-lang">
+                    <span class="bold-text">Lingua:</span> {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
                 </p>
                 
                 <div class="vote-wrapper">
@@ -25,7 +26,7 @@
                 </div>
 
                 <p class="overview" >
-                    {{ truncate(overview, 400) }}
+                    <span class="bold-text">Overview:</span> {{ truncate(overview, 250) }}
                 </p>
     
             </div>
@@ -102,7 +103,9 @@ export default {
 
     section.media-card {
         border: 1px solid black;
-        width: calc((100% / 4) - 1rem);
+        width: calc((100% / 5) - 1rem);
+        height: 100%;
+        aspect-ratio: 1 / 1.5;
         margin-bottom: 1rem;
         
 
@@ -114,7 +117,11 @@ export default {
 
     div.cover-wrapper {
         position: relative;
-        z-index: 0;       
+        z-index: 0;
+        height: 100%;
+        object-fit: cover;
+
+       
     }
 
     div.media-info-wrapper {
@@ -135,19 +142,20 @@ export default {
         color: white;
         width: 100%;
         height: 100%;
+
         span.bold-text {
             font-weight: $bold-text;
         }
 
     }
 
-    
+    p {
+        margin-bottom: .25rem;
 
-  
-
-
+    }
     div.vote-wrapper {
         @include flex(row, start, center);
+        margin-bottom: .25rem;
     }
 
     img.star {

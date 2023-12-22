@@ -39,6 +39,7 @@ export default {
 
         div.logo {
             color: $accent-color;
+            font-size: 2rem;
         }
 
         input.searchbar {
