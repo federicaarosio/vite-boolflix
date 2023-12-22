@@ -18,11 +18,15 @@
                 </p>
                 
                 <div class="vote-wrapper">
-                    <span class="bold-text">Voto: </span>
+                    <span class="bold-text">Voto:</span>
                     <div v-for="star in (voteAverage)" :key="star">
                         <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
                     </div>
                 </div>
+
+                <p class="overview" >
+                    {{ truncate(overview, 400) }}
+                </p>
     
             </div>
         </div>
@@ -70,7 +74,22 @@ export default {
             type: Number,
             required: true
         },
+
+        overview: {
+            type: String,
+            required: true
+        },
     },
+
+    methods: {
+        truncate(text, length) {
+            if (text.length > length) {
+                return text.substring(0, length) + "...";
+            } else {
+                return text;
+            }
+        },
+    }
 
 }
 </script>
@@ -115,6 +134,7 @@ export default {
         background-color: black;
         color: white;
         width: 100%;
+        height: 100%;
         span.bold-text {
             font-weight: $bold-text;
         }

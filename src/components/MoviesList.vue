@@ -10,6 +10,7 @@
             :originalTitle= "movie.original_title"
             :originalLanguage= "movie.original_language"
             :voteAverage= "Math.ceil(movie.vote_average/2)"
+            :overview= "movie.overview"
             />
         </section>
     </section>

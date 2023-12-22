@@ -10,6 +10,7 @@
             :originalTitle= "serie.name"
             :originalLanguage= "serie.original_language"
             :voteAverage= "Math.ceil(serie.vote_average/2)"
+            :overview= "serie.overview"
             />
         </section>
 
