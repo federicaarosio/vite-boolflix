@@ -2,14 +2,46 @@
     <section class="media-card">
 
         <!-- Copertina -->
-        <div class="maincontainer">
+        <div class="media-container">
+
             <div class="thecard">
-                <div class="front">front</div>
-                <div class="back">back</div>
+
+                <div class="front">
+                    <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
+                    <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
+                </div>
+
+                <div class="back">
+                    <div class="media-info-wrapper">
+                
+                        <p class="title">
+                            <span class="bold-text">Titolo:</span> {{title}}
+                        </p>
+                        <p class="original-title">
+                            <span class="bold-text">Titolo originale:</span> {{ originalTitle }}
+                        </p>
+                        <p class="media-lang">
+                            <span class="bold-text">Lingua:</span> {{ originalLanguage }} <country-flag :country='originalLanguage' size='small'/>
+                        </p>
+                
+                        <div class="vote-wrapper">
+                            <span class="bold-text">Voto:</span>
+                            <div v-for="star in (voteAverage)" :key="star">
+                                <img src="../assets/img/Gold_Star.svg" alt="star svg" class="star">
+                            </div>
+                        </div>
+
+                        <p class="overview" >
+                            <span class="bold-text">Overview:</span> {{ truncate(overview, 250) }}
+                        </p>
+    
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="cover-wrapper">
+        <!-- <div class="cover-wrapper">
             <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
             <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
 
@@ -39,9 +71,8 @@
                 <button>More info</button>
     
             </div>
-        </div>
+        </div> -->
         
-        <!-- Media Info -->
         
     </section>
 </template>
@@ -110,46 +141,11 @@ export default {
 @use "../styles/partials/mixins" as *;
 @use "../styles/partials/variables" as *;
 
-    div.maincontainer {
-        position: relative;
-        width: 100%;
-        height: 100%;
-
-        div.thecard {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: all 1s ease;
-
-            
-
-            div.front {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                backface-visibility: hidden;
-                background-color: orange;
-            }
-
-            div.back {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                backface-visibility: hidden;
-                background-color: #d77c7c;
-                transform: rotateY(180deg);
-            }
-        }
-
-    }
-    section.media-card {
-        border: 1px solid black;
+section.media-card {
         width: calc((100% / 5) - 1rem);
         height: 100%;
         aspect-ratio: 1 / 1.5;
         margin-bottom: 1rem;
-        
 
         img.poster {
             width: 100%;
@@ -157,39 +153,79 @@ export default {
         }
     }
 
-    div.cover-wrapper {
+    div.media-container {
         position: relative;
-        z-index: 0;
-        height: 100%;
-        object-fit: cover;
-
-       
-    }
-
-    div.media-info-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-
-    }
-
-    div.cover-wrapper:hover div.media-info-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        padding: $main-padding;
-        background-color: black;
-        color: white;
         width: 100%;
         height: 100%;
 
-        span.bold-text {
-            font-weight: $bold-text;
+        div.thecard:hover{
+        transform: rotateY(180deg);
+        }  
+        div.thecard {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            background-color: $bg-color;
+
+
+            div.front {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+            }
+
+            div.back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                background-color: rgba(0, 0, 0, 0.396);
+                transform: rotateY(180deg);
+                padding: $main-padding;
+
+                span.bold-text {
+                    font-weight: bold;
+                }
+            }
         }
 
     }
+    
+
+    // div.cover-wrapper {
+        // position: relative;
+        // z-index: 0;
+        // height: 100%;
+        // object-fit: cover;
+
+       
+    // }
+
+    // div.media-info-wrapper {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     z-index: -1;
+
+    // }
+
+    // div.cover-wrapper:hover div.media-info-wrapper {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // z-index: 1;
+        // padding: $main-padding;
+        // background-color: black;
+        // color: white;
+        // width: 100%;
+        // height: 100%;
+
+        
+
+    // }
 
     p {
         margin-bottom: .25rem;
