@@ -2,6 +2,13 @@
     <section class="media-card">
 
         <!-- Copertina -->
+        <div class="maincontainer">
+            <div class="thecard">
+                <div class="front">front</div>
+                <div class="back">back</div>
+            </div>
+        </div>
+
         <div class="cover-wrapper">
             <img v-if="image != null" :src="`https://image.tmdb.org/t/p/w300${image}`" :alt="`poster of ${title}`" class="poster"/>
             <img v-else src="https://placehold.co/300x450?text=Image+not+found" :alt="`poster of ${title}`" class="poster">
@@ -28,6 +35,8 @@
                 <p class="overview" >
                     <span class="bold-text">Overview:</span> {{ truncate(overview, 250) }}
                 </p>
+
+                <button>More info</button>
     
             </div>
         </div>
@@ -101,6 +110,39 @@ export default {
 @use "../styles/partials/mixins" as *;
 @use "../styles/partials/variables" as *;
 
+    div.maincontainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        div.thecard {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+
+            
+
+            div.front {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                background-color: orange;
+            }
+
+            div.back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                background-color: #d77c7c;
+                transform: rotateY(180deg);
+            }
+        }
+
+    }
     section.media-card {
         border: 1px solid black;
         width: calc((100% / 5) - 1rem);
@@ -157,7 +199,6 @@ export default {
         @include flex(row, start, center);
         margin-bottom: .25rem;
     }
-
     img.star {
         width: 15px;
         margin-left: 7px;
